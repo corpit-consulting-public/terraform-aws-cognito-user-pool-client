@@ -7,7 +7,7 @@ variable "allowed_oauth_flows" {
 variable "allowed_oauth_flows_user_pool_client" {
   type        = "string"
   description = "Whether the client is allowed to follow the OAuth protocol whe interacting with Cognito User Pool (true or false)"
-  default     = ""
+  default     = "true"
 }
 
 variable "allowed_oauth_scopes" {
