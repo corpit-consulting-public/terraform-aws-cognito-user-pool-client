@@ -14,15 +14,16 @@ Important
 
 module "cognito-user-pool-client" {
   source                               = "./modules/tf-aws-cognito-user-pool-client"
-  name                                 = "${var.name}"
-  user_pool_id                         = "${module.CognitoUserPool.id}"
+  name                                 = "${var.cognito_client_params["name"]}"
+  user_pool_id                         = "${module.CorpitUserPool.id}"
   read_attributes                      = "${var.read_attributes}"
   supported_identity_providers         = "${var.supported_identity_providers}"
   callback_urls                        = "${var.callback_urls}"
   logout_urls                          = "${var.logout_urls}"
-  allowed_oauth_flows                  = "${var.allowed_oauth_flows}"
-  refresh_token_validity               = "${var.refresh_token_validity}"
-  allowed_oauth_flows_user_pool_client = "${var.allowed_oauth_flows_user_pool_client}"
+  allowed_oauth_flows                  = ["${var.allowed_oauth_flows}"]
+  refresh_token_validity               = "${var.cognito_client_params["refresh_token_validity"]}"
+  allowed_oauth_flows_user_pool_client = "${var.cognito_client_params["allowed_oauth_flows_user_pool_client"]}"
+  allowed_oauth_scopes                 = "${var.allowed_oauth_scopes}"
 }
 
 ```
@@ -35,7 +36,7 @@ If you want to update README.md file, run that script while being in 'hooks' fol
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | allowed\_oauth\_flows | List of allowed OAuth flows (code, implicit, client_credential) | list | `<list>` | no |
-| allowed\_oauth\_flows\_user\_pool\_client | Whether the client is allowed to follow the OAuth protocol whe interacting with Cognito User Pool (true or false) | string | `""` | no |
+| allowed\_oauth\_flows\_user\_pool\_client | Whether the client is allowed to follow the OAuth protocol whe interacting with Cognito User Pool (true or false) | string | `"true"` | no |
 | allowed\_oauth\_scopes | List of allowed OAuth scopes (phone, email, openid, profile, and aws.cognito,signin.user.admin) | list | `<list>` | no |
 | callback\_urls | List of allowed callback URLs for the identity prpviders | list | `<list>` | no |
 | default\_redirect\_uri | The default redirect URI. Must be in the list of callback URLs | string | `""` | no |
