@@ -35,9 +35,9 @@ variable "explicit_auth_flows" {
 }
 
 variable "generate_secret" {
-  type        = string
+  type        = bool
   description = "Should be an application secret be generated (true or false)"
-  default     = ""
+  default     = "false"
 }
 
 variable "logout_urls" {
