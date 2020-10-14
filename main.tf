@@ -12,5 +12,6 @@ resource "aws_cognito_user_pool_client" "client" {
   refresh_token_validity               = var.refresh_token_validity
   allowed_oauth_flows_user_pool_client = var.allowed_oauth_flows_user_pool_client
   allowed_oauth_scopes                 = var.allowed_oauth_scopes
+  prevent_user_existence_errors        = var.prevent_user_existence_errors
 }
 

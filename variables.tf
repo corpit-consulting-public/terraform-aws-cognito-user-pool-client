@@ -80,3 +80,9 @@ variable "write_attributes" {
   default     = []
 }
 
+variable "prevent_user_existence_errors" {
+  type        = string
+  description = "Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to ENABLED and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to LEGACY, those APIs will return a UserNotFoundException exception if the user does not exist in the user pool."
+  default     = ""
+}
+
